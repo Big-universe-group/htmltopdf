@@ -1,0 +1,505 @@
+body{
+	font:Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	color: #565656;
+	background-color:#DEE9FD;
+	background-repeat:repeat-x;
+}
+@media print {
+	.breakhere { 
+		height:0; 
+		page-break-before:always; 
+		margin:0; 
+		border-top:none; 
+	}
+	.noPrint{
+		display: none;
+	}
+}
+#container {
+	width:780px;
+	margin: 0 auto;
+	text-align:left;
+}
+
+#menu {
+	width: 100%;
+	height: 43px;
+	font-size: 1em;
+	font-weight: bold;
+	list-style-type: none;
+	margin: 4px;
+	padding: 0;
+	top left repeat-x;
+}
+
+#menu li {
+	display: block;
+	float: left;
+	margin: 0 0 0 5px;
+	font-size:13px;
+}
+
+#menu li a {
+	height: 30px;
+	color: #064070;
+	font-family: Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	display: block;
+	float: left;
+	line-height: 100%;
+	padding: 0px 5px 0;
+}
+
+#menu a:hover {
+	background-color: transparent;
+	color:#B2B2B2;
+}
+
+#menu li a.current{
+	color: #FFF;
+	padding: 5px 15px 0;
+}
+
+#header {
+	width:780px;
+	height:124px;
+	position: relative;
+}
+
+#ICAhotspot {
+	width: 97px;
+	height: 95px;
+	position: absolute;
+	left: 19px;
+	top: 8px;
+	display:block;
+	background-position:-19px -8px;
+}
+
+#SGgovernHotspot {
+	width: 242px;
+	height: 35px;
+	position: absolute;
+	left: 530px;
+	display:block;
+	background-position:250px 0px;
+}
+
+/* hyperlinks */
+a:active, a:link, a:visited {color:#429fcb; text-decoration: underline;}
+a:hover, a:visited:hover{background-color:#429fcb; text-decoration:none; color:#FFF;}
+
+img {
+	border:0;
+}
+
+p {
+	line-height: 1.6em;
+	padding-left:10px;
+	padding-right:15px;
+}
+
+#heading {
+	width:760px;
+}
+
+#heading h1{
+	font-family: 'Lucida Sans,' Trebuchet MS, sans-serif;
+	color:#A20100;
+	font-size:30px;
+	font-weight:bold;
+	line-height:24pt;
+	letter-spacing: -1px;
+	padding-left:20px;
+	margin-top:0;
+}
+
+/* main styles classes */
+#main {
+	padding-left:20px;
+}
+
+#main h1{
+	font-family: 'Lucida Sans,' Trebuchet MS, sans-serif;
+	color:#565656;
+	font-size:26px;
+	letter-spacing: -1px;
+	padding-left:10px;
+}
+
+#main h2{
+	color:#064070;
+	font-size:14px;
+	font-weight:bold;
+	letter-spacing: -1px;
+	padding:5px 10px;
+	background-color:#E6E6E6;
+}
+
+#padding10 {
+	width:95%;
+	padding-left:10px;
+}
+
+#padding08 {
+	padding-left:4px;
+	width:96.5%;
+}
+
+.headernobg {
+	color:#064070;
+	font-size:14px;
+	font-weight:bold;
+	letter-spacing: -1px;
+	padding-left:10px;
+}
+.emphasize {
+	font-size:14px;
+	font-size:120%;
+	color:#333;
+	font-weight:bold;
+}
+
+.announcement {
+	padding: 3px 5px 10px 5px;
+	background-color:#F1EBD6;
+}
+
+.announcement h3 {
+	color:#B90C0B;
+	font-family: 'Lucida Sans,' Trebuchet MS, sans-serif;
+	font-size:14px;
+	font-weight:bold;
+	margin-left:5px;
+}
+
+.announcement p {
+	padding-left:0;
+}
+
+.announcement ul {	
+	padding-left:5px;	
+	margin-left:17px;
+}
+
+.saveErrorMsg {
+	width:90%;
+	color:#B90C0B;
+	font-weight:bold;
+	padding-left:0;
+}
+
+.information {
+	color:#000
+}
+
+.supp {
+	color:#7f7f7f;
+}
+
+/* bottom and footer areas */
+.bottom {
+	text-align:center;
+	font-size:11px;
+	margin-right:10;
+}
+
+#footer {
+	width:740px;
+	font-size:10px;
+	background-repeat:repeat-x;
+	background-color:#CCD7EE;
+	
+}
+
+
+#footer a:active, #footer a:link, #footer a:visited {color:#846D6D; text-decoration: none;}
+#footer a:hover`, #footer a:visited:hover{background-color:#846D6D; text-decoration:none; color:#FFF;}
+
+/* globally reusable classes */
+hr {
+	color:#B2B2B2;
+	border:0px;
+	border-top-width: thin;
+	border-top-style: dotted;
+	border-top-color: #B2B2B2;
+	height:1px;
+	margin-bottom:10px;
+	padding:0px;
+	margin: 4px;
+}
+
+table.footer {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:10px;
+	padding-top:10px;
+	margin:0 7px;
+	padding-right:15px;
+}
+
+table {
+	font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+}
+
+.termsOfUse {
+	font-size:10px;
+}
+
+#changeFont {
+	position:relative;
+	width: 250px;
+	font-family: Arial,Verdana,Helvetica;
+	right: 30px;
+	font-size:12px;
+}
+
+.vertAlign {
+	vertical-align: top;
+	font-size:12px;
+}
+
+/*****Added By Joyce Liu*****/
+form .upperCase {
+	text-transform: uppercase;
+}
+
+form .buttonsInTable {
+	width:60px;
+	margin-left:5px;
+}
+
+form .ackButtons {
+	width: 250px; 
+	height:25px; 
+	text-align: center
+}
+
+form .buttons {
+	width:100px;
+	margin-left:5px;
+	margin-right:5px;
+}
+
+form .bigButtons {
+	width:150px;
+	margin-left:5px;
+	margin-right:5px;
+}
+
+form .biggerButtons {
+	width:200px;
+	margin-left:5px;
+	margin-right:5px;
+}
+
+.transdetail { 
+	font-size:10px;
+}
+
+/*For DataTable*/
+.sNoColumn { width: 4%; border:solid 1px;border-color:#4C4C4C; text-align: center;}
+.nameColumn { border:solid 1px;border-color:#4C4C4C; word-wrap: break-word; text-align: left;}
+.sexColumn { width: 5%; border:solid 1px;border-color:#4C4C4C; text-align: center;}
+.dateOfBirthColumn { width: 15%; border:solid 1px;border-color:#4C4C4C; text-align: center;}
+.travelDocNoColumn { width: 22%; border:solid 1px;border-color:#4C4C4C; text-align: center;}
+.nationalityColumn { width: 13%; border:solid 1px;border-color:#4C4C4C; text-align: center;}
+.actionColumn { width: 20%; text-align: center; border:solid 1px; border-color:#4C4C4C;}
+.remarkColumn { width: 8%; text-align: center; border:solid 1px; border-color:#4C4C4C;}
+.visaReferenceNoColumn {width: 20%; text-align: center; border:solid 1px; border-color:#4C4C4C;}
+.eVisaNoColumn {width: 12%; text-align: center; border:solid 1px; border-color:#4C4C4C;}
+.printCheckboxColumn {width: 5%; text-align: center; border:solid 1px; border-color:#4C4C4C;}
+.omReportColumn {width: 25%; text-align: center; border:solid 1px; border-color:#4C4C4C;}
+.dateColumn { width: 10%; border:solid 1px; border-color:#4C4C4C; text-align: center;}
+/*Start Add by Kang Yuan */
+.applicationStatusColumn {width: 15%; text-align: center; border:solid 1px; border-color:#4C4C4C;}
+.visaPrintedByColumn {width: 15%; text-align: center; border:solid 1px; border-color:#4C4C4C;}
+.stickerImageColumn {width: 6%; text-align: left; border:solid 1px; border-color:#4C4C4C;}
+.visaValidityPeriodColumn {width: 10%; text-align: left; border:solid 1px; border-color:#4C4C4C;}
+.visaPrintStatusColumn {width: 13%; text-align: center; border:solid 1px; border-color:#4C4C4C;}
+.checkBoxColumn {width: 5%; text-align: center; border:solid 1px; border-color:#4C4C4C;}
+.genericColumn {text-align: center; border:solid 1px; border-color:#4C4C4C;}/*Use when you just want to draw the border but not to specify a width*/
+/*End Add by Kang Yuan */
+
+/*Start Add by Terence */
+.adminCodeTable {
+	width:100%;
+	border:solid 1px;
+	border-spacing: 0px;
+	border-collapse: separate;
+	border-spacing: 0px;
+	*border-collapse: expression('separate', cellSpacing = '0px');
+	cellspacing:0px;
+    cellpadding:0px;
+}
+.seventysixPercentLeftColumn 	{width:76%;text-align:left;border: solid 1px #4C4C4C;}
+.sixtysixPercentLeftColumn 		{width:66%;text-align:left;border:solid 1px #4C4C4C;}
+.sixtyPercentLeftColumn 		{width:60%;text-align:left;border:solid 1px #4C4C4C;}
+.fortysixPercentLeftColumn 		{width:46%;text-align:left;border:solid 1px #4C4C4C;}
+.thirtysixPercentCenterColumn	{width:36%;text-align:center;border:solid 1px #4C4C4C;}
+.twentyPercentCenterColumn 		{width:20%;text-align:center;border:solid 1px #4C4C4C;}
+.twentyPercentCenterBreakColumn {width:20%;text-align:center;border:solid 1px #4C4C4C;word-break: break-all;}
+.tenPercentCenterColumn 		{width:10%;text-align:center;border:solid 1px #4C4C4C;}
+.tenPercentLeftColumn 			{width:10%;text-align:left;border:solid 1px #4C4C4C;}
+.fivePercentCenterColumn		{width:5%;text-align:center;border:solid 1px #4C4C4C;}
+/*End Add by Terence */
+
+.saveTable {
+       border-spacing: 0px;
+       border:solid 1px #BBBBBB;
+       cellspacing:0px;
+       cellpadding:0px;
+       font-family: Arial, Helvetica, sans-serif;
+       font-size: 12px;
+}
+
+.saveTable-header {
+       font-family: Arial;
+       font-size: 13px;
+       font-weight: bold;
+       color: #003F87;
+       border:solid 1px;
+       text-align: center;
+	   background-color: #F0F8FF;
+	   border-color:#4C4C4C;
+       vertical-align: middle;
+}
+.saveTable-footer {
+	   font-family: Arial;
+       font-size: 13px;
+       font-weight: bold;
+       color: #003F87;
+       border:solid 1px;
+       text-align: center;
+	   border-color:#4C4C4C;
+}
+.saveTable-bodyTxt {
+       font-family: Arial;
+       font-size: 12px;
+       color: #4C4C4C;
+       text-align: center;
+       vertical-align: middle;
+}
+
+/* Alternate Row Color */
+.saveTable-altTxt {
+       border-bottom: 1px solid #CCC;
+       font-family: Arial;
+       font-size: 12px;
+       color: #4C4C4C;
+       text-align: center;
+       vertical-align: middle;
+       background-color: #F0F8FF;
+}
+/* Start Add by Terence */
+.saveTable-headerSmall {
+       font-family: Arial;
+       font-size: 7px;
+       font-weight: bold;
+       color: #003F87;
+       border:solid 1px;
+       text-align: center;
+	   background-color: #F0F8FF;
+	   border-color:#4C4C4C;
+}
+.saveTable-bodyTxtSmall {
+       font-family: Arial;
+       font-size: 7px;
+       color: #4C4C4C;
+       text-align: center;
+       vertical-align: middle;
+}
+
+/* Alternate Row Color */
+.saveTable-altTxtSmall {
+       border-bottom: 1px solid #CCC;
+       font-family: Arial;
+       font-size: 7px;
+       color: #4C4C4C;
+       text-align: center;
+       vertical-align: middle;
+       background-color: #F0F8FF;
+}
+/* End Add by Terence */
+
+#visaStatus {
+	text-align:center;
+}
+
+.ovalInputs {
+	background-color:#F1EBD6;
+}
+
+/*****End of Adding By Joyce Liu******/
+
+.omMultiStickerTable
+{
+       border:solid 1px;
+ border-collapse: separate;
+ border-spacing: 0px;
+ *border-collapse: expression('separate', cellSpacing = '0px');
+}
+.omStickerHalfCellRight{
+	vertical-align:top;
+	border: none 1px;
+	width: 280px;
+	height:350px;
+}
+.omStickerHalfCellLeft{
+vertical-align:top;
+	border: none 1px;
+	width: 310px;
+	height:350px;
+}
+
+/*Start Add by Terence for adminMainMenu.xhtml*/
+.adminMainMenu {
+/* 	margin-left:auto; */
+/* 	margin-right:auto; */
+	margin: 0 auto;
+}
+
+.adminMainMenu td {
+	vertical-align:top;
+}
+.adminMainMenuMFAFinance {
+	margin: 0 auto;
+}
+.adminMainMenuMFAFinance td, .adminMainMenuMFAFinance tr {
+    text-align: center;
+}
+/*End Add by Terence for adminMainMenu.xhtml*/
+
+
+/*****Added By Keh *****/
+#submenu {
+	color:#064070;
+	font-size:12px;
+	font-weight:bold;
+	padding:0px 0px;
+	width:96.5%;
+	height:20px;
+	margin-left:3px;
+	background-color:#E6E6E6;
+}
+
+#submenu div {
+	position:absolute;
+	visibility:hidden;
+	background:#E6E6E6;
+}
+
+.header5Percent {
+	width: 5%;
+}
+.header10Percent {
+	width: 10%;
+}
+.header15Percent {
+	width: 15%;
+}
+/*****End of Adding By Keh******/

@@ -1,0 +1,1172 @@
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <meta content="IE=100" http-equiv="X-UA-Compatible"/>
+  <meta content="no-cache" http-equiv="pragma"/>
+  <meta content="no-cache" http-equiv="cache-control"/>
+  <meta content="0" http-equiv="expires"/>
+  <link href="./static/theme.css.xhtml?ln=primefaces-eservice" rel="stylesheet" type="text/css"/>
+  <script src="./static/jquery.js.xhtml?ln=primefaces&amp;v=4.0" type="text/javascript">
+  </script>
+  <script src="./static/primefaces.js.xhtml?ln=primefaces&amp;v=4.0" type="text/javascript">
+  </script>
+  <link href="./static/primefaces.css.xhtml?ln=primefaces&amp;v=4.0" rel="stylesheet" type="text/css"/>
+  <script src="./static/jquery-plugins.js.xhtml?ln=primefaces&amp;v=4.0" type="text/javascript">
+  </script>
+  <link href="./static/fileupload.css.xhtml?ln=primefaces&amp;v=4.0" rel="stylesheet" type="text/css"/>
+  <link href="./static/custom-pf-dataTable.css.xhtml?ln=css" rel="stylesheet" type="text/css"/>
+  <link href="./static/MainStyle.css.xhtml?ln=css" rel="stylesheet" type="text/css"/>
+  <script src="./static/printer.js.xhtml?ln=primefaces&amp;v=4.0" type="text/javascript">
+  </script>
+  <script src="./static/fileupload.js.xhtml?ln=primefaces&amp;v=4.0" type="text/javascript">
+  </script>
+  <script src="./static/primefaces-extensions.js.xhtml?ln=primefaces-extensions&amp;v=0.6.2" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   if (self === top) {
+                var antiClickjack = document.getElementById("antiClickjack");
+                antiClickjack.parentNode.removeChild(antiClickjack);
+            } else {
+                top.location = self.location;
+            }
+        
+            $(window).resize(function(){
+                setContentDivHeight();
+                setMenuDivHeight();
+            });
+            //we use DIV instead of layoutUnit because if there is popup for subform, the value won't be
+            //set when click submit button. So we need to set the height of the content DIV to avoid the scroll on whole page.
+            function setContentDivHeight() {
+                //Do nothing as the application is whole page scrollable
+            }
+
+            function setMenuDivHeight() {
+                //Do nothing as the application is whole page scrollable
+            }
+
+            var isSessionTimerNeed = "Y";
+            var sessionDuration = 899;
+
+            function initSession(){
+                //console.log(isSessionTimerNeed);
+                if(isSessionTimerNeed == "Y"){
+                    setInterval(function(){
+                        sessionDuration = sessionDuration - 1;
+                        var msg = document.getElementById("sessionTimeoutCfmMsg");
+                        //console.log(sessionDuration);
+                        if(sessionDuration == 30){
+                            msg.innerHTML = "The current session is about to time out in "+ sessionDuration + " seconds. \nDo you want to extend the session?";
+                            sessionTimeoutCfmDlg.show();
+                        }else if(sessionDuration < 30 && sessionDuration > 0){
+                            msg.innerHTML = "The current session is about to time out in "+ sessionDuration + " seconds. \nDo you want to extend the session?";
+                        }else if(sessionDuration < 0){
+                            window.location.href = "/save-oval/index.xhtml";
+                        }
+
+                    },1000);
+                }
+            }
+
+            function resetLeftTime(){
+                sessionDuration = 899;
+            }
+
+            function refreshPage() {
+                window.location=window.location;
+            }
+  </script>
+ </head>
+ <body onload="initSession();" style="overflow-y:auto; overflow-x:hidden">
+  <div id="container">
+   <div id="saveHeader">
+    <script src="./static/fontresizer.js.xhtml?ln=js" type="text/javascript">
+    </script>
+    <title>
+     Immigration &amp; Checkpoints Authority - SAVE
+    </title>
+    <div align="right" id="header">
+     <a alt="Immigration &amp; Checkpoints Authority" href="https://www.ica.gov.sg/" id="ICAhotspot" target="_blank" title="Immigration &amp; Checkpoints Authority">
+     </a>
+     <a href="http://www.gov.sg/" id="SGgovernHotspot" target="_blank" title="Singapore Government">
+     </a>
+     <br/>
+     <br/>
+     <br/>
+     <div id="changeFont">
+      <a href="#down" id="down" title="Decrease Text Size">
+       -A
+      </a>
+      <a href="#reset" id="reset" title="Reset Text Size">
+       A
+      </a>
+      <a href="#up" id="up" title="Increase Text Size">
+       A+
+      </a>
+      <br/>
+      <a href="/save-oval/xhtml/common/TnC.xhtml" target="popupWindow">
+       Terms and Conditions
+      </a>
+      |
+      <a href="/save-oval/xhtml/common/FAQ.xhtml" target="popupWindow">
+       FAQs
+      </a>
+      |
+      <a href="/save-oval/xhtml/common/Help.xhtml" target="popupWindow">
+       Help
+      </a>
+     </div>
+    </div>
+    <table border="0" cellpadding="10" cellspacing="0" class="content_table" width="100%">
+     <tr>
+      <td style="background-image:url(./static/wImage31.gif.xhtml);" valign="top">
+       <div id="heading">
+        <img align="right" alt=" " height="100px" src="./static/wImage35.jpg.xhtml" width="236px"/>
+        <h1>
+         Submission of Application for Visa Electronically (SAVE)
+        </h1>
+       </div>
+      </td>
+     </tr>
+    </table>
+   </div>
+   <table border="0" cellpadding="0" cellspacing="0" class="content_table" width="100%">
+    <tr>
+     <td style="background-image:url(./static/wImage31.gif.xhtml);" valign="top">
+      <div id="main">
+       <script type="text/javascript">
+        $(document).ready(function() {
+                hidePrintPreview();
+            });
+
+            function hidePrintPreview() {
+                $("#saveHeader").addClass("noPrint");
+                $("#saveFooter").addClass("noPrint");
+                $("#menubar").addClass("noPrint");
+            }
+       </script>
+       <div id="menubar">
+        <script type="text/javascript">
+         var timeout    = 400;
+        var timer = 0;
+        var menuItem = 0;
+    
+        //Show hidden menu
+        function showMenu(id) {
+            //Cancel the timer
+            cancelCloseMenuCountdown();
+    
+            //Hide layer before showing
+            if(menuItem) menuItem.style.visibility = 'hidden';
+            menuItem = document.getElementById(id);
+            menuItem.style.visibility = 'visible';
+        }
+        
+        function closeMenu() {
+            if(menuItem) menuItem.style.visibility = 'hidden';
+        }
+    
+        //Start a timer that close the submenu
+        function closeMenuCountdown() {
+            timer = window.setTimeout(closeMenu, timeout);
+        }
+    
+        //Cancel the timer that close the submenu
+        function cancelCloseMenuCountdown() {
+            if(timer) {
+                window.clearTimeout(timer);
+                timer = null;
+            }
+        }
+        
+        function chooseOpt() {
+            var message = "";
+            if(message != "") {
+                var r = confirm("This visa application is incomplete. \n" + message + "\nClick 'OK' to delete or 'Cancel' to continue with this application.");
+                return r;
+            } else {
+                return true;
+            }
+        }
+        </script>
+        <div id="submenu">
+         <form action="/save-oval/index.xhtml" enctype="application/x-www-form-urlencoded" id="j_idt3833" method="post" name="j_idt3833">
+          <input name="j_idt3833" type="hidden" value="j_idt3833"/>
+          <table border="0" cellpadding="0" cellspacing="0" style="valign:middle" width="100%">
+           <tr>
+            <td width="1%">
+            </td>
+            <td align="left" width="15%">
+             <div class="menuLabel" id="menuLabel1">
+             </div>
+             <a onmouseout="closeMenuCountdown()" onmouseover="showMenu('menu1')">
+              Visa Application
+             </a>
+             <div class="submenu" id="menu1" onclick="closeMenu" onmouseout="closeMenuCountdown()" onmouseover="cancelCloseMenuCountdown()">
+              <table cellpadding="1" cellspacing="0">
+               <tr>
+                <td width="5%">
+                 &gt;
+                </td>
+                <td width="95%">
+                 <script src="./static/jsf.js.xhtml?ln=javax.faces" type="text/javascript">
+                 </script>
+                 <a href="#" onclick="jsf.util.chain(this,event,'return chooseOpt();','mojarra.jsfcljs(document.getElementById(\'j_idt3833\'),{\'j_idt3833:j_idt3845\':\'j_idt3833:j_idt3845\'},\'\')');return false" type="submit">
+                  Individual Application
+                 </a>
+                </td>
+               </tr>
+              </table>
+             </div>
+            </td>
+            <td align="left" width="17%">
+             <div class="menuLabel" id="menuLabel2">
+             </div>
+             <a onmouseout="closeMenuCountdown()" onmouseover="showMenu('menu2')">
+              Application Enquiry
+             </a>
+             <div class="submenu" id="menu2" onclick="closeMenu" onmouseout="closeMenuCountdown()" onmouseover="cancelCloseMenuCountdown()">
+              <table cellpadding="1" cellspacing="0">
+               <tr>
+                <td width="5%">
+                 &gt;
+                </td>
+                <td width="95%">
+                 <a href="#" onclick="jsf.util.chain(this,event,'return chooseOpt();','mojarra.jsfcljs(document.getElementById(\'j_idt3833\'),{\'j_idt3833:j_idt3856\':\'j_idt3833:j_idt3856\'},\'\')');return false" type="submit">
+                  Application Status
+                 </a>
+                </td>
+               </tr>
+              </table>
+             </div>
+            </td>
+            <td align="left" width="3%">
+             <div class="menuLabel" id="menuLabel4">
+             </div>
+             <div class="menu" id="menu4">
+             </div>
+            </td>
+            <td align="left" width="15%">
+             <div class="menuLabel" id="menuLabel3">
+             </div>
+             <a onmouseout="closeMenuCountdown()" onmouseover="showMenu('menu3')">
+              Administration
+             </a>
+             <div class="submenu" id="menu3" onclick="closeMenu" onmouseout="closeMenuCountdown()" onmouseover="cancelCloseMenuCountdown()">
+              <table cellpadding="1" cellspacing="0">
+               <tr>
+                <td width="5%">
+                 &gt;
+                </td>
+                <td width="95%">
+                 <a href="#" onclick="jsf.util.chain(this,event,'return chooseOpt()','mojarra.jsfcljs(document.getElementById(\'j_idt3833\'),{\'j_idt3833:j_idt3865\':\'j_idt3833:j_idt3865\'},\'\')');return false" type="submit">
+                  Change Password
+                 </a>
+                </td>
+               </tr>
+              </table>
+             </div>
+            </td>
+            <td align="right">
+             <a href="#" onclick="mojarra.jsfcljs(document.getElementById('j_idt3833'),{'j_idt3833:j_idt3867':'j_idt3833:j_idt3867'},'');return false" type="submit">
+              Logout
+             </a>
+            </td>
+            <td align="right" width="1%">
+            </td>
+           </tr>
+          </table>
+          <input autocomplete="off" id="javax.faces.ViewState" name="javax.faces.ViewState" type="hidden" value="4150916815918696230:-7403645433531393424"/>
+         </form>
+        </div>
+        <br/>
+       </div>
+       <form action="/save-oval/index.xhtml" enctype="application/x-www-form-urlencoded" id="PrintForm14APage" method="post" name="PrintForm14APage">
+        <input name="PrintForm14APage" type="hidden" value="PrintForm14APage"/>
+        <div id="padding08">
+         <div class="noPrint" id="noPrintBtnTop">
+          <hr/>
+          <table border="0" cellpadding="2" cellspacing="0" width="100%">
+           <tr>
+            <td align="center" style="padding-top: 2em; padding-bottom: 2em;">
+             <input class="bigButtons" id="PrintForm14APage:j_idt3887" name="PrintForm14APage:j_idt3887" onclick="PrimeFaces.Expressions.resolveComponentsAsSelector('PrintForm14APage:printForm14A').jqprint();return false;" type="submit" value="Print Form 14A"/>
+             <input class="buttons" name="PrintForm14APage:j_idt3888" type="submit" value="Back"/>
+            </td>
+           </tr>
+          </table>
+          <hr/>
+         </div>
+         <span id="PrintForm14APage:printForm14A">
+          <table border="0" cellpadding="2" cellspacing="0" width="100%">
+           <tr>
+            <td>
+             <font class="transdetail">
+              Visa application reference number:
+                                        BEJ833277SA11432018
+             </font>
+             <br/>
+            </td>
+           </tr>
+          </table>
+          <table cellpadding="0" cellspacing="0" width="100%">
+           <tr>
+            <td>
+             <table width="100%">
+              <tr>
+               <td colspan="2">
+               </td>
+               <td rowspan="3" valign="center" width="20%">
+                <table border="1" cellpadding="0" cellspacing="0" width="100%">
+                 <tr>
+                  <td align="center" valign="center">
+                   <br/>
+                   <br/>
+                   <br/>
+                   <br/>
+                   Affix a recent
+                   <br/>
+                   Passport-sized
+                   <br/>
+                   photograph
+                                                                here
+                   <br/>
+                   <br/>
+                   <br/>
+                   <br/>
+                   <br/>
+                  </td>
+                 </tr>
+                </table>
+               </td>
+              </tr>
+              <tr>
+               <td class="transdetail" valign="center" width="20%">
+                Notes:
+                <br/>
+                **Delete
+                                                where appropriate
+                <br/>
+               </td>
+               <td align="center" valign="center" width="60%">
+                <b>
+                 FORM
+                                                    14A
+                 <br/>
+                 IMMIGRATION ACT [CHAPTER 133, SECTION - 55(1)]
+                 <br/>
+                 PASSPORTS
+                                                    ACT [NO.33 of 2007]
+                 <br/>
+                 <br/>
+                </b>
+               </td>
+              </tr>
+              <tr>
+               <td colspan="2" width="80%">
+                APPLICATION FOR ENTRY VISA
+               </td>
+              </tr>
+             </table>
+            </td>
+           </tr>
+           <tr>
+            <td>
+             <table border="1" cellpadding="0" cellspacing="0" width="100%">
+              <tr>
+               <td colspan="3">
+                <b>
+                 PART I - PARTICULARS OF APPLICANT
+                </b>
+               </td>
+              </tr>
+              <tr>
+               <td colspan="3">
+                <table width="100%">
+                 <tr>
+                  <td valign="top" width="25%">
+                   Name:
+                  </td>
+                  <td valign="top" width="75%">
+                   ZHAO YANG
+                   <br/>
+                  </td>
+                 </tr>
+                 <tr>
+                  <td colspan="2">
+                   Full name as it appears in
+                                                            passport/travel document
+                  </td>
+                 </tr>
+                 <tr>
+                  <td valign="top">
+                   Alias:
+                  </td>
+                  <td valign="top">
+                   <br/>
+                  </td>
+                 </tr>
+                </table>
+               </td>
+              </tr>
+              <tr>
+               <td colspan="3">
+                <table width="100%">
+                 <tr>
+                  <td valign="top" width="25%">
+                   Date Of Birth:
+                  </td>
+                  <td valign="top" width="25%">
+                   12/08/1983
+                   <br/>
+                   <font class="transdetail">
+                    (DD/MM/YYYY)
+                   </font>
+                  </td>
+                  <td valign="top" width="15%">
+                   Sex:
+                  </td>
+                  <td valign="top" width="35%">
+                   MALE
+                   <br/>
+                  </td>
+                 </tr>
+                </table>
+               </td>
+              </tr>
+              <tr>
+               <td colspan="3">
+                <table width="100%">
+                 <tr>
+                  <td valign="top" width="25%">
+                   Marital Status:
+                  </td>
+                  <td valign="top" width="75%">
+                   MARRIED
+                   <br/>
+                  </td>
+                 </tr>
+                 <tr>
+                  <td valign="top" width="25%">
+                   Nationality of Spouse:
+                  </td>
+                  <td valign="top" width="75%">
+                   CHINESE
+                  </td>
+                 </tr>
+                 <tr>
+                  <td valign="top" width="25%">
+                   Spouse's NRIC No:
+                  </td>
+                  <td valign="top" width="75%">
+                   <br/>
+                  </td>
+                 </tr>
+                </table>
+               </td>
+              </tr>
+              <tr>
+               <td colspan="3">
+                <table width="100%">
+                 <tr>
+                  <td valign="top" width="25%">
+                   Country of Birth:
+                  </td>
+                  <td colspan="3" valign="top">
+                   CHINA
+                   <br/>
+                  </td>
+                 </tr>
+                 <tr>
+                  <td valign="top" width="25%">
+                   State / Province of Birth:
+                  </td>
+                  <td colspan="3" valign="top">
+                   BEIJING
+                   <br/>
+                  </td>
+                 </tr>
+                 <tr>
+                  <td valign="top" width="25%">
+                   Race:
+                  </td>
+                  <td colspan="3" valign="top">
+                   CHINESE
+                   <br/>
+                  </td>
+                 </tr>
+                 <tr>
+                  <td valign="top" width="25%">
+                   Nationality:
+                  </td>
+                  <td colspan="3" valign="top">
+                   CHINESE
+                   <br/>
+                  </td>
+                 </tr>
+                </table>
+               </td>
+              </tr>
+              <tr>
+               <td colspan="3">
+                <table width="100%">
+                 <tr>
+                  <td valign="top" width="25%">
+                   Type of Travel Document Held:
+                  </td>
+                  <td colspan="3" valign="top">
+                   INTERNATIONAL PASSPORT
+                   <br/>
+                  </td>
+                 </tr>
+                 <tr>
+                  <td valign="top" width="25%">
+                   Travel Document No:
+                  </td>
+                  <td colspan="3" valign="top">
+                   ED1577674
+                   <br/>
+                  </td>
+                 </tr>
+                 <tr>
+                  <td valign="top" width="25%">
+                   Travel Document
+                   <br/>
+                   Issue Date:
+                  </td>
+                  <td valign="top" width="25%">
+                   <br/>
+                   28/04/2018
+                   <font class="transdetail">
+                    (DD/MM/YYYY)
+                   </font>
+                   <br/>
+                  </td>
+                  <td valign="top" width="15%">
+                   <br/>
+                   Expiry Date:
+                  </td>
+                  <td valign="top" width="35%">
+                   <br/>
+                   27/04/2028
+                   <font class="transdetail">
+                    (DD/MM/YYYY)
+                   </font>
+                   <br/>
+                  </td>
+                 </tr>
+                 <tr>
+                  <td valign="top">
+                   Country of Issue:
+                  </td>
+                  <td colspan="3" valign="top">
+                   CHINA
+                   <br/>
+                  </td>
+                 </tr>
+                 <tr>
+                  <td valign="top">
+                   Place of Issue:
+                  </td>
+                  <td colspan="3" valign="top">
+                   BEIJING
+                   <br/>
+                  </td>
+                 </tr>
+                </table>
+               </td>
+              </tr>
+              <tr>
+               <td colspan="3">
+                <table width="100%">
+                 <tr>
+                  <td colspan="2" valign="top">
+                   <i>
+                    Address in
+                                                                Country of Origin
+                   </i>
+                  </td>
+                 </tr>
+                 <tr>
+                  <td valign="top" width="25%">
+                   Country of Origin:
+                  </td>
+                  <td valign="top" width="75%">
+                   CHINA
+                   <br/>
+                  </td>
+                 </tr>
+                 <tr>
+                  <td valign="top">
+                   Division/Province/State of Origin:
+                  </td>
+                  <td valign="top">
+                   BEIJING
+                   <br/>
+                  </td>
+                 </tr>
+                 <tr>
+                  <td valign="top">
+                   Prefecture of Origin:
+                  </td>
+                  <td valign="top">
+                   <br/>
+                  </td>
+                 </tr>
+                 <tr>
+                  <td valign="top">
+                   County/District of Origin:
+                  </td>
+                  <td valign="top">
+                   <br/>
+                  </td>
+                 </tr>
+                 <tr>
+                  <td valign="top">
+                   Address:
+                  </td>
+                  <td valign="top">
+                   NO.138 ANDE STREET XICHENG
+                   <br/>
+                  </td>
+                 </tr>
+                </table>
+               </td>
+              </tr>
+             </table>
+            </td>
+           </tr>
+           <tr>
+            <td align="center">
+             - 1 -
+            </td>
+           </tr>
+          </table>
+          <div style="page-break-before: always;">
+          </div>
+          <table cellpadding="0" cellspacing="0" width="100%">
+           <tr>
+            <td>
+             <font class="transdetail">
+              <br/>
+              Visa application reference number:
+             </font>
+             <font class="transdetail">
+              BEJ833277SA11432018
+             </font>
+             <br/>
+            </td>
+           </tr>
+           <tr>
+            <td>
+             <table border="1" cellpadding="0" cellspacing="0" width="100%">
+              <tr>
+               <td colspan="3">
+                <b>
+                 PART II - OTHER DETAILS
+                </b>
+               </td>
+              </tr>
+              <tr>
+               <td colspan="3">
+                <table width="100%">
+                 <tr>
+                  <td colspan="3" valign="top" width="50%">
+                   Occupation:
+                  </td>
+                  <td valign="top">
+                   PROFESSIONAL
+                  </td>
+                 </tr>
+                 <tr>
+                  <td colspan="3" valign="top" width="50%">
+                   Highest Academic / Professional Qualifications Attained:
+                  </td>
+                  <td valign="top">
+                   UNIVERSITY
+                   <br/>
+                  </td>
+                 </tr>
+                 <tr>
+                  <td colspan="3" valign="top" width="50%">
+                   Religion/Denomination:
+                  </td>
+                  <td valign="top">
+                   FREE THINKER
+                   <br/>
+                  </td>
+                 </tr>
+                 <tr>
+                  <td colspan="3" valign="top" width="50%">
+                   Date of Intended Arrival in Singapore:
+                  </td>
+                  <td valign="top">
+                   26/05/2018
+                   <br/>
+                  </td>
+                 </tr>
+                 <tr>
+                  <td colspan="3" valign="top" width="50%">
+                   How long do you intend to stay in Singapore?
+                  </td>
+                  <td valign="top">
+                   Less than 30 days
+                   <br/>
+                  </td>
+                 </tr>
+                 <tr>
+                  <td colspan="3" valign="top" width="50%">
+                   Purpose Of Visit
+                  </td>
+                  <td valign="top">
+                   TOUR
+                   <br/>
+                  </td>
+                 </tr>
+                </table>
+               </td>
+              </tr>
+              <tr>
+               <td colspan="3">
+                <table width="100%">
+                 <tr>
+                  <td colspan="6" valign="top">
+                   <i>
+                    Address in
+                                                                Singapore
+                   </i>
+                  </td>
+                 </tr>
+                 <tr>
+                  <td valign="top">
+                   Where will you be staying in Singapore?
+                  </td>
+                  <td colspan="5" valign="top">
+                   HOTEL
+                   <br/>
+                  </td>
+                 </tr>
+                 <tr>
+                  <td valign="top" width="25%">
+                   Block/House No:
+                  </td>
+                  <td valign="top" width="13%">
+                   <br/>
+                  </td>
+                  <td valign="top" width="12%">
+                   Floor No:
+                  </td>
+                  <td valign="top" width="13%">
+                   <br/>
+                  </td>
+                  <td valign="top" width="12%">
+                   Unit No:
+                  </td>
+                  <td valign="top" width="25%">
+                   <br/>
+                  </td>
+                 </tr>
+                 <tr>
+                  <td valign="top">
+                   Street Name:
+                  </td>
+                  <td colspan="3" valign="top">
+                   <br/>
+                  </td>
+                  <td valign="top">
+                   Postal Code:
+                  </td>
+                  <td valign="top">
+                   <br/>
+                  </td>
+                 </tr>
+                 <tr>
+                  <td valign="top">
+                   Building Name:
+                  </td>
+                  <td colspan="3" valign="top">
+                   <br/>
+                  </td>
+                  <td valign="top">
+                   Tel No:
+                  </td>
+                  <td valign="top">
+                   <br/>
+                  </td>
+                 </tr>
+                </table>
+               </td>
+              </tr>
+              <tr>
+               <td colspan="3">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                 <tr>
+                  <td colspan="4" valign="top">
+                   Did you reside in other countries, other than your country of origin, for one year or more during the last 5 years? 
+                                                            NO
+                   <br/>
+                  </td>
+                 </tr>
+                </table>
+               </td>
+              </tr>
+             </table>
+            </td>
+           </tr>
+           <tr>
+            <td align="center">
+             - 2 -
+            </td>
+           </tr>
+          </table>
+          <div style="page-break-before: always;">
+          </div>
+          <table cellpadding="0" cellspacing="0" width="100%">
+           <tr>
+            <td>
+             <font class="transdetail">
+              Visa application
+                                            reference number:
+             </font>
+             <font class="transdetail">
+              BEJ833277SA11432018
+             </font>
+             <br/>
+            </td>
+           </tr>
+           <tr>
+            <td>
+             <table border="1" cellpadding="0" cellspacing="0" width="100%">
+              <tr>
+               <td colspan="2">
+                <b>
+                 PART III - ANTECEDENT OF
+                                                    APPLICANT
+                </b>
+               </td>
+              </tr>
+              <tr>
+               <td colspan="2">
+                <table width="100%">
+                 <tr>
+                  <td width="85%">
+                   Have you ever been refused entry into or deported from any country, including Singapore?
+                  </td>
+                  <td width="15%">
+                   NO
+                   <br/>
+                  </td>
+                 </tr>
+                 <tr>
+                  <td>
+                   Have you ever been convicted in a court of law in any country, including Singapore?
+                  </td>
+                  <td>
+                   NO
+                   <br/>
+                  </td>
+                 </tr>
+                 <tr>
+                  <td>
+                   Have you ever been prohibited from entering Singapore?
+                  </td>
+                  <td>
+                   NO
+                   <br/>
+                  </td>
+                 </tr>
+                 <tr>
+                  <td>
+                   Have you ever entered Singapore using a different passport or name?
+                  </td>
+                  <td>
+                   NO
+                   <br/>
+                  </td>
+                 </tr>
+                </table>
+               </td>
+              </tr>
+             </table>
+            </td>
+           </tr>
+           <tr>
+            <td>
+            </td>
+           </tr>
+           <tr>
+            <td>
+             <table border="1" cellpadding="0" cellspacing="0" width="100%">
+              <tr>
+               <td colspan="2">
+                <b>
+                 PART IV - DECLARATION BY
+                                                    APPLICANT
+                </b>
+               </td>
+              </tr>
+              <tr>
+               <td>
+                <table cellpadding="2" width="100%">
+                 <tr>
+                  <td colspan="5">
+                   I declare that the particulars and
+                                                            documents furnished in respect of this application are
+                                                            true and correct.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td colspan="5">
+                   I undertake not to misuse controlled
+                                                            drugs or to take part in any political or other
+                                                            activities during my stay in Singapore which would make
+                                                            me an undesirable or prohibited immigrant under the
+                                                            Immigration Act.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td colspan="5">
+                   I undertake to comply with the
+                                                            provisions of the Immigration Act and any regulations
+                                                            made thereunder or any statutory modification or
+                                                            re-enactment thereof for the time being in force in
+                                                            Singapore.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td colspan="5">
+                   I undertake not to involve in any
+                                                            criminal offences in Singapore.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td colspan="5">
+                   I undertake not to indulge in any
+                                                            activities which are inconsistent with the purpose for
+                                                            which the immigration passes have been issued.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td colspan="5">
+                   I further undertake not to be engaged
+                                                            in any form of employment, business or occupation whilst
+                                                            in Singapore without the written consent of the
+                                                            Controller of Immigration.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td colspan="5">
+                   I am aware that overstaying or
+                                                            working illegally in Singapore is a serious offence and
+                                                            on conviction, the penalties may include mandatory
+                                                            imprisonment and caning.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td colspan="5">
+                   I understand that if the Controller
+                                                            of Immigration is satisfied that I or any member of my
+                                                            family breaches this undertaking or becomes an
+                                                            undesirable or prohibited immigrant, he will cancel my
+                                                            immigration pass and the passes of the members of my
+                                                            family, and we may be required to leave Singapore within
+                                                            24 hours of such cancellation.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td colspan="5">
+                   I understand that this application
+                                                            for and possession of a visa does not guarantee entry
+                                                            into Singapore and permission to enter is entirely
+                                                            discretionary at the point of entry.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td colspan="5">
+                   I give my consent for your department
+                                                            to obtain and verify information from or with any source
+                                                            as you deem appropriate for the assessment of my
+                                                            application for immigration facilities.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td width="20%">
+                  </td>
+                  <td align="center" width="20%">
+                   <br/>
+                   ________________
+                   <br/>
+                   Date
+                  </td>
+                  <td width="20%">
+                  </td>
+                  <td align="center" width="20%">
+                   <br/>
+                   ________________________
+                   <br/>
+                   Signature
+                                                            of Applicant
+                  </td>
+                  <td width="20%">
+                  </td>
+                 </tr>
+                </table>
+               </td>
+              </tr>
+             </table>
+            </td>
+           </tr>
+           <tr>
+            <td align="center">
+             - 3 -
+            </td>
+           </tr>
+          </table>
+          <div style="page-break-before: always;">
+          </div>
+          <div style="page-break-before: always;">
+          </div>
+         </span>
+         <div class="noPrint" id="noPrintBtnBtm">
+          <hr/>
+          <table border="0" cellpadding="2" cellspacing="0" width="100%">
+           <tr>
+            <td align="center" style="padding-top: 2em; padding-bottom: 2em;">
+             <input class="bigButtons" id="PrintForm14APage:j_idt4196" name="PrintForm14APage:j_idt4196" onclick="PrimeFaces.Expressions.resolveComponentsAsSelector('PrintForm14APage:printForm14A').jqprint();return false;" type="submit" value="Print Form 14A"/>
+             <input class="buttons" name="PrintForm14APage:j_idt4197" type="submit" value="Back"/>
+            </td>
+           </tr>
+          </table>
+          <hr/>
+         </div>
+        </div>
+        <input autocomplete="off" id="javax.faces.ViewState" name="javax.faces.ViewState" type="hidden" value="4150916815918696230:-7403645433531393424"/>
+       </form>
+       <script type="text/javascript">
+        $(document).ready(function () {
+            document.title = "Immigration & Checkpoints Authority - SAVE";
+        });
+       </script>
+      </div>
+     </td>
+    </tr>
+   </table>
+   <div id="saveFooter">
+    <table border="0" cellpadding="7" cellspacing="0" class="content_table" width="100%">
+     <tr>
+      <td style="background-image:url(./static/wImage31.gif.xhtml);" valign="top">
+       <br/>
+       <br/>
+       <table align="center" border="0" cellpadding="2" cellspacing="0" style="border:2px solid red" width="96%">
+        <tr align="center">
+         <td>
+          <font color="#003366">
+           <b>
+            Click on the buttons or links once only.
+            <br/>
+            Do not use the Back or Forward button on your browser as this may end your transaction.
+           </b>
+          </font>
+         </td>
+        </tr>
+       </table>
+       <hr/>
+       <div class="noImage">
+        <div class="bottom">
+         <p>
+          If you encounter any problems with this e-service, please contact us at 6391 6100, or email
+          <a href="mailto:ica_save_helpdesk@ica.gov.sg" target="_self">
+           ica_save_helpdesk@ica.gov.sg
+          </a>
+          <br/>
+          <br/>
+          This website is optimised for IE version 10.0, 11.0, Firefox 27.0, 28.0 and Safari 6.1, 7.0, Chrome 34.0, 35.0, Opera 19, 20
+         </p>
+        </div>
+       </div>
+      </td>
+     </tr>
+    </table>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+     <tr>
+      <td align="center">
+       <img height="21" src="./static/wImage33.gif.xhtml" style="display:block;" width="780"/>
+      </td>
+     </tr>
+     <tr>
+      <td align="center">
+       <div id="footer">
+        <table border="0" cellpadding="3" cellspacing="0" class="footer" width="100%">
+         <tr>
+          <td align="left">
+           <a href="https://www.ica.gov.sg/" target="_blank">
+            ICA Website
+           </a>
+           •
+           <a href="http://www.ecitizen.gov.sg/" target="_blank">
+            eCitizen
+           </a>
+          </td>
+          <td>
+          </td>
+         </tr>
+         <tr>
+          <td align="left">
+           <a href="https://www.ica.gov.sg/landingpage/landingpage_privacy" target="_blank">
+            Privacy Statement
+           </a>
+           |
+           <a href="https://www.ica.gov.sg/landingpage/landingpage_termsofuse" target="_blank">
+            Terms of Use
+           </a>
+          </td>
+          <td>
+           <div align="right">
+            © 2018
+                                         Government of Singapore
+           </div>
+          </td>
+         </tr>
+        </table>
+       </div>
+      </td>
+     </tr>
+    </table>
+    <br/>
+   </div>
+  </div>
+  <script id="sessionTimeoutDialog_s" type="text/javascript">
+   $(function(){PrimeFaces.cw('ConfirmDialog','sessionTimeoutCfmDlg',{id:'sessionTimeoutDialog',width:'500'});});
+  </script>
+  <div class="ui-confirm-dialog ui-dialog ui-widget ui-widget-content ui-overlay-hidden ui-corner-all ui-shadow" id="sessionTimeoutDialog">
+   <div class="ui-dialog-titlebar ui-widget-header ui-helper-clearfix ui-corner-top">
+    <span class="ui-dialog-title">
+     Please extend your session
+    </span>
+    <a class="ui-dialog-titlebar-icon ui-dialog-titlebar-close ui-corner-all" href="#">
+     <span class="ui-icon ui-icon-closethick">
+     </span>
+    </a>
+   </div>
+   <div class="ui-dialog-content ui-widget-content">
+    <span class="ui-icon ui-icon-alert ui-confirm-dialog-severity">
+    </span>
+    <span class="ui-confirm-dialog-message">
+     <span id="sessionTimeoutCfmMsg">
+      The current session is about to time out in 30 seconds. Do you want to extend the session?
+     </span>
+    </span>
+   </div>
+   <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+    <div align="center">
+     <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" id="j_idt56" name="j_idt56" onclick="sessionTimeoutCfmDlg.hide();resetLeftTime();;PrimeFaces.ab({source:'j_idt56'});return false;" type="submit">
+      <span class="ui-button-text ui-c">
+       OK
+      </span>
+     </button>
+     <script id="j_idt56_s" type="text/javascript">
+      PrimeFaces.cw('CommandButton','widget_j_idt56',{id:'j_idt56'});
+     </script>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>

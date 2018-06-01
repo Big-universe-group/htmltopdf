@@ -1,0 +1,638 @@
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="IE=100" http-equiv="X-UA-Compatible"/>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <meta content="no-cache" http-equiv="pragma"/>
+  <meta content="no-cache" http-equiv="cache-control"/>
+  <meta content="0" http-equiv="expires"/>
+  <link href="./static/theme.css.xhtml?ln=primefaces-eservice" rel="stylesheet" type="text/css"/>
+  <link href="./static/primefaces.css.xhtml?ln=primefaces&amp;v=4.0" rel="stylesheet" type="text/css"/>
+  <link href="./static/fileupload.css.xhtml?ln=primefaces&amp;v=4.0" rel="stylesheet" type="text/css"/>
+  <link href="./static/custom-pf-dataTable.css.xhtml?ln=css" rel="stylesheet" type="text/css"/>
+  <link href="./static/MainStyle.css.xhtml?ln=css" rel="stylesheet" type="text/css"/>
+  <script src="./static/jquery.js.xhtml?ln=primefaces&amp;v=4.0" type="text/javascript">
+  </script>
+  <script src="./static/primefaces.js.xhtml?ln=primefaces&amp;v=4.0" type="text/javascript">
+  </script>
+  <script src="./static/jquery-plugins.js.xhtml?ln=primefaces&amp;v=4.0" type="text/javascript">
+  </script>
+  <script src="./static/fileupload.js.xhtml?ln=primefaces&amp;v=4.0" type="text/javascript">
+  </script>
+  <script src="./static/primefaces-extensions.js.xhtml?ln=primefaces-extensions&amp;v=0.6.2" type="text/javascript">
+  </script>
+  <!-- <style id="antiClickjack"> -->
+  <!--  body{display:none !important;} -->
+  <!-- </style> -->
+  <script type="text/javascript">
+   if (self === top) {
+                var antiClickjack = document.getElementById("antiClickjack");
+                antiClickjack.parentNode.removeChild(antiClickjack);
+            } else {
+                top.location = self.location;
+            }
+        
+            $(window).resize(function(){
+                setContentDivHeight();
+                setMenuDivHeight();
+            });
+            //we use DIV instead of layoutUnit because if there is popup for subform, the value won't be
+            //set when click submit button. So we need to set the height of the content DIV to avoid the scroll on whole page.
+            function setContentDivHeight() {
+                //Do nothing as the application is whole page scrollable
+            }
+
+            function setMenuDivHeight() {
+                //Do nothing as the application is whole page scrollable
+            }
+
+            var isSessionTimerNeed = "Y";
+            var sessionDuration = 899;
+
+            function initSession(){
+                //console.log(isSessionTimerNeed);
+                if(isSessionTimerNeed == "Y"){
+                    setInterval(function(){
+                        sessionDuration = sessionDuration - 1;
+                        var msg = document.getElementById("sessionTimeoutCfmMsg");
+                        //console.log(sessionDuration);
+                        if(sessionDuration == 30){
+                            msg.innerHTML = "The current session is about to time out in "+ sessionDuration + " seconds. \nDo you want to extend the session?";
+                            sessionTimeoutCfmDlg.show();
+                        }else if(sessionDuration < 30 && sessionDuration > 0){
+                            msg.innerHTML = "The current session is about to time out in "+ sessionDuration + " seconds. \nDo you want to extend the session?";
+                        }else if(sessionDuration < 0){
+                            window.location.href = "/save-oval/index.xhtml";
+                        }
+
+                    },1000);
+                }
+            }
+
+            function resetLeftTime(){
+                sessionDuration = 899;
+            }
+
+            function refreshPage() {
+                window.location=window.location;
+            }
+  </script>
+ </head>
+
+ <body onload="initSession();" style="overflow-y: auto; overflow-x: hidden;">
+  <div id="container">
+   <div id="saveHeader">
+    <script src="./static/fontresizer.js.xhtml?ln=js" type="text/javascript">
+    </script>
+    <title>
+     Immigration &amp; Checkpoints Authority - SAVE
+    </title>
+    <div align="right" id="header">
+     <a alt="Immigration &amp; Checkpoints Authority" href="https://www.ica.gov.sg/" id="ICAhotspot" target="_blank" title="Immigration &amp; Checkpoints Authority">
+     </a>
+     <a href="http://www.gov.sg/" id="SGgovernHotspot" target="_blank" title="Singapore Government">
+     </a>
+     <br/>
+     <br/>
+     <br/>
+     <div id="changeFont">
+      <a href="#down" id="down" title="Decrease Text Size">
+       -A
+      </a>
+      <a href="#reset" id="reset" title="Reset Text Size">
+       A
+      </a>
+      <a href="#up" id="up" title="Increase Text Size">
+       A+
+      </a>
+      <br/>
+      <a href="/save-oval/xhtml/common/TnC.xhtml" target="popupWindow">
+       Terms and Conditions
+      </a>
+      |
+      <a href="/save-oval/xhtml/common/FAQ.xhtml" target="popupWindow">
+       FAQs
+      </a>
+      |
+      <a href="/save-oval/xhtml/common/Help.xhtml" target="popupWindow">
+       Help
+      </a>
+     </div>
+    </div>
+    <table border="0" cellpadding="10" cellspacing="0" class="content_table" width="100%">
+     <tr>
+      <td style="background-image:url(./static/wImage31.gif.xhtml);" valign="top">
+       <div id="heading">
+        <img align="right" alt=" " height="100px" src="./static/wImage35.jpg.xhtml" width="236px"/>
+        <h1>
+         Submission of Application for Visa Electronically (SAVE)
+        </h1>
+       </div>
+      </td>
+     </tr>
+    </table>
+   </div>
+   <table border="0" cellpadding="0" cellspacing="0" class="content_table" width="100%">
+    <tr>
+     <td style="background-image:url(./static/wImage31.gif.xhtml);" valign="top">
+      <div id="main">
+       <script type="text/javascript">
+        var timeout    = 400;
+        var timer = 0;
+        var menuItem = 0;
+    
+        //Show hidden menu
+        function showMenu(id) {
+            //Cancel the timer
+            cancelCloseMenuCountdown();
+    
+            //Hide layer before showing
+            if(menuItem) menuItem.style.visibility = 'hidden';
+            menuItem = document.getElementById(id);
+            menuItem.style.visibility = 'visible';
+        }
+        
+        function closeMenu() {
+            if(menuItem) menuItem.style.visibility = 'hidden';
+        }
+    
+        //Start a timer that close the submenu
+        function closeMenuCountdown() {
+            timer = window.setTimeout(closeMenu, timeout);
+        }
+    
+        //Cancel the timer that close the submenu
+        function cancelCloseMenuCountdown() {
+            if(timer) {
+                window.clearTimeout(timer);
+                timer = null;
+            }
+        }
+        
+        function chooseOpt() {
+            var message = "";
+            if(message != "") {
+                var r = confirm("This visa application is incomplete. \n" + message + "\nClick 'OK' to delete or 'Cancel' to continue with this application.");
+                return r;
+            } else {
+                return true;
+            }
+        }
+       </script>
+       <div id="submenu">
+        <form action="/save-oval/index.xhtml" enctype="application/x-www-form-urlencoded" id="j_idt590" method="post" name="j_idt590">
+         <input name="j_idt590" type="hidden" value="j_idt590"/>
+         <table border="0" cellpadding="0" cellspacing="0" style="valign:middle" width="100%">
+          <tr>
+           <td width="1%">
+           </td>
+           <td align="left" width="15%">
+            <div class="menuLabel" id="menuLabel1">
+            </div>
+            <a onmouseout="closeMenuCountdown()" onmouseover="showMenu('menu1')">
+             Visa Application
+            </a>
+            <div class="submenu" id="menu1" onclick="closeMenu" onmouseout="closeMenuCountdown()" onmouseover="cancelCloseMenuCountdown()">
+             <table cellpadding="1" cellspacing="0">
+              <tr>
+               <td width="5%">
+                &gt;
+               </td>
+               <td width="95%">
+                <script src="./static/jsf.js.xhtml?ln=javax.faces" type="text/javascript">
+                </script>
+                <a href="#" onclick="jsf.util.chain(this,event,'return chooseOpt();','mojarra.jsfcljs(document.getElementById(\'j_idt590\'),{\'j_idt590:j_idt602\':\'j_idt590:j_idt602\'},\'\')');return false" type="submit">
+                 Individual Application
+                </a>
+               </td>
+              </tr>
+             </table>
+            </div>
+           </td>
+           <td align="left" width="17%">
+            <div class="menuLabel" id="menuLabel2">
+            </div>
+            <a onmouseout="closeMenuCountdown()" onmouseover="showMenu('menu2')">
+             Application Enquiry
+            </a>
+            <div class="submenu" id="menu2" onclick="closeMenu" onmouseout="closeMenuCountdown()" onmouseover="cancelCloseMenuCountdown()">
+             <table cellpadding="1" cellspacing="0">
+              <tr>
+               <td width="5%">
+                &gt;
+               </td>
+               <td width="95%">
+                <a href="#" onclick="jsf.util.chain(this,event,'return chooseOpt();','mojarra.jsfcljs(document.getElementById(\'j_idt590\'),{\'j_idt590:j_idt613\':\'j_idt590:j_idt613\'},\'\')');return false" type="submit">
+                 Application Status
+                </a>
+               </td>
+              </tr>
+             </table>
+            </div>
+           </td>
+           <td align="left" width="3%">
+            <div class="menuLabel" id="menuLabel4">
+            </div>
+            <div class="menu" id="menu4">
+            </div>
+           </td>
+           <td align="left" width="15%">
+            <div class="menuLabel" id="menuLabel3">
+            </div>
+            <a onmouseout="closeMenuCountdown()" onmouseover="showMenu('menu3')">
+             Administration
+            </a>
+            <div class="submenu" id="menu3" onclick="closeMenu" onmouseout="closeMenuCountdown()" onmouseover="cancelCloseMenuCountdown()">
+             <table cellpadding="1" cellspacing="0">
+              <tr>
+               <td width="5%">
+                &gt;
+               </td>
+               <td width="95%">
+                <a href="#" onclick="jsf.util.chain(this,event,'return chooseOpt()','mojarra.jsfcljs(document.getElementById(\'j_idt590\'),{\'j_idt590:j_idt622\':\'j_idt590:j_idt622\'},\'\')');return false" type="submit">
+                 Change Password
+                </a>
+               </td>
+              </tr>
+             </table>
+            </div>
+           </td>
+           <td align="right">
+            <a href="#" onclick="mojarra.jsfcljs(document.getElementById('j_idt590'),{'j_idt590:j_idt624':'j_idt590:j_idt624'},'');return false" type="submit">
+             Logout
+            </a>
+           </td>
+           <td align="right" width="1%">
+           </td>
+          </tr>
+         </table>
+         <input autocomplete="off" id="javax.faces.ViewState" name="javax.faces.ViewState" type="hidden" value="4150916815918696230:4862866197996075951"/>
+        </form>
+       </div>
+       <br/>
+       <script language="Javascript">
+        (function() {
+                  var afterPrint = function() {
+                      alert("Your visa application is completed.");
+                  };
+    
+                  if (window.matchMedia) {
+                      var mediaQueryList = window.matchMedia('print');
+                      mediaQueryList.addListener(function(mql) {
+                          if (mql.matches) {
+                          } else {
+                              afterPrint();
+                          }
+                      });
+                  }
+                  window.onafterprint = afterPrint;
+              }());
+       </script>
+       <form action="/save-oval/index.xhtml" enctype="multipart/form-data" id="Form14AAcknowledgementPage" method="post" name="Form14AAcknowledgementPage">
+        <input name="Form14AAcknowledgementPage" type="hidden" value="Form14AAcknowledgementPage"/>
+        <div id="padding10">
+         <b>
+          Step 6 of 6: Acknowledgement
+         </b>
+        </div>
+        <br/>
+        <div id="padding08">
+         <div class="announcement">
+          <table border="0" cellpadding="0" cellspacing="5" width="100%">
+           <tr>
+            <td>
+            </td>
+           </tr>
+           <tr>
+            <td align="center">
+             <h3>
+              Thank you for using SAVE
+             </h3>
+             <br/>
+             <b>
+              Your
+                                    application has been submitted successfully.
+              <br/>
+              Please
+                                    print this acknowledgement page.
+             </b>
+             <br/>
+             <br/>
+            </td>
+           </tr>
+           <tr>
+            <td align="left">
+             The grant of a visa does not exempt the holder from compliance, registration or application for the relevant pass, permit or license,
+             <br/>
+             as the case may be, to carry out the proposed activity(ies) declared in the visa application, as required under Singapore's laws.
+            </td>
+           </tr>
+          </table>
+         </div>
+         <br/>
+         <h2>
+          Summary of Application Details
+         </h2>
+         <table border="0" cellpadding="0" cellspacing="5" width="100%">
+          <tr>
+           <td>
+            <table border="0" cellpadding="0" cellspacing="5" width="98%">
+             <tr>
+              <td valign="top" width="30%">
+              </td>
+              <td valign="top" width="2%">
+              </td>
+              <td align="right" valign="top">
+               <a href="#" onclick="mojarra.jsfcljs(document.getElementById('Form14AAcknowledgementPage'),{'Form14AAcknowledgementPage:j_idt635':'Form14AAcknowledgementPage:j_idt635'},'');return false">
+                Click here to print electrontic Form 14A
+               </a>
+              </td>
+             </tr>
+             <tr>
+              <td valign="top" width="30%">
+               Visa Reference Number
+              </td>
+              <td valign="top" width="2%">
+               :
+              </td>
+              <td valign="top">
+               <img src="./images/BEJ843827SA11442018.png"/>
+               <br/>
+               <b>
+                BEJ833277SA11432018
+               </b>
+              </td>
+             </tr>
+             <tr>
+              <td valign="top">
+               Name
+              </td>
+              <td valign="top">
+               :
+              </td>
+              <td valign="top">
+               ZHAO YANG
+              </td>
+             </tr>
+             <tr>
+              <td valign="top">
+               Travel Document Type and Number
+              </td>
+              <td valign="top">
+               :
+              </td>
+              <td valign="top">
+               INTERNATIONAL PASSPORT / 
+                                        ED1577674
+              </td>
+             </tr>
+             <tr>
+              <td valign="top">
+               Sex
+              </td>
+              <td valign="top">
+               :
+              </td>
+              <td valign="top">
+               MALE
+              </td>
+             </tr>
+             <tr>
+              <td valign="top">
+               Date Of Birth
+              </td>
+              <td valign="top">
+               :
+              </td>
+              <td valign="top">
+               12/08/1983
+              </td>
+             </tr>
+             <tr>
+              <td valign="top">
+               Nationality
+              </td>
+              <td valign="top">
+               :
+              </td>
+              <td valign="top">
+               CHINESE
+              </td>
+             </tr>
+             <tr>
+              <td valign="top">
+               Submitted on
+              </td>
+              <td valign="top">
+               :
+              </td>
+              <td valign="top">
+               23/05/2018 11:57:57
+              </td>
+             </tr>
+             <tr>
+              <td colspan="3">
+              </td>
+             </tr>
+             <tr>
+              <td colspan="3">
+               <table border="0" cellpadding="0" cellspacing="0" class="transdetail" width="95%">
+                <tr>
+                 <td valign="top" width="20%">
+                  EPayment Reference No
+                 </td>
+                 <td valign="top" width="1%">
+                  :
+                 </td>
+                 <td valign="top">
+                  18052311552327
+                 </td>
+                </tr>
+               </table>
+              </td>
+             </tr>
+             <tr>
+              <td colspan="3">
+              </td>
+             </tr>
+             <tr>
+              <td class="transdetail" colspan="3" valign="top">
+               Please ensure that your application is accurately and correctly completed. You are required to re-submit a new application if any discrepancy is
+               <br/>
+               discovered for the visa application and you have to make payment for the visa that has already been issued for the initial application.
+              </td>
+             </tr>
+             <tr>
+              <td colspan="3">
+              </td>
+             </tr>
+             <tr class="emphasize">
+              <td align="center" colspan="3">
+               <b>
+                An application will take 
+                                            1 working day (excluding the date of submission and Public Holidays)             to process. However, some applications may take a longer time to process.
+               </b>
+              </td>
+             </tr>
+            </table>
+           </td>
+          </tr>
+         </table>
+         <div class="noPrint">
+          <table border="0" cellpadding="0" cellspacing="5" width="100%">
+           <tr>
+            <td>
+             <table border="0" cellpadding="0" cellspacing="5" id="noImage" width="98%">
+              <tr align="left" style="height:30px;">
+               <td align="center" width="40%">
+                <input class="ackButtons" name="Form14AAcknowledgementPage:j_idt685" onclick="window.print();" type="button" value="Print Acknowledgement"/>
+               </td>
+              </tr>
+              <tr>
+               <td>
+               </td>
+              </tr>
+              <tr align="left" style="height:30px;">
+               <td align="center" width="40%">
+                <a href="https://www.jusfeedback.asia/Community/se.ashx?s=7FDA9EA749F14922&amp;Agency=MHA.ICA&amp;Svc=Submission%20of%20Application%20for%20Visa%20Electronically%20(SAVE)&amp;eLnk=http%3A//www.ica.gov.sg/poll/SAVE.html&amp;Cat=Citizen" target="_blank">
+                 Rate this e-service
+                </a>
+               </td>
+              </tr>
+             </table>
+            </td>
+           </tr>
+          </table>
+         </div>
+        </div>
+        <input autocomplete="off" id="javax.faces.ViewState" name="javax.faces.ViewState" type="hidden" value="4150916815918696230:4862866197996075951"/>
+       </form>
+       <script type="text/javascript">
+        $(document).ready(function () {
+            document.title = "Immigration & Checkpoints Authority - SAVE";
+        });
+       </script>
+      </div>
+     </td>
+    </tr>
+   </table>
+   <div id="saveFooter">
+    <table border="0" cellpadding="7" cellspacing="0" class="content_table" width="100%">
+     <tr>
+      <td style="background-image:url(./static/wImage31.gif.xhtml);" valign="top">
+       <br/>
+       <br/>
+       <table align="center" border="0" cellpadding="2" cellspacing="0" style="border:2px solid red" width="96%">
+        <tr align="center">
+         <td>
+          <font color="#003366">
+           <b>
+            Click on the buttons or links once only.
+            <br/>
+            Do not use the Back or Forward button on your browser as this may end your transaction.
+           </b>
+          </font>
+         </td>
+        </tr>
+       </table>
+       <hr/>
+       <div class="noImage">
+        <div class="bottom">
+         <p>
+          If you encounter any problems with this e-service, please contact us at 6391 6100, or email
+          <a href="mailto:ica_save_helpdesk@ica.gov.sg" target="_self">
+           ica_save_helpdesk@ica.gov.sg
+          </a>
+          <br/>
+          <br/>
+          This website is optimised for IE version 10.0, 11.0, Firefox 27.0, 28.0 and Safari 6.1, 7.0, Chrome 34.0, 35.0, Opera 19, 20
+         </p>
+        </div>
+       </div>
+      </td>
+     </tr>
+    </table>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+     <tr>
+      <td align="center">
+       <img height="21" src="./static/wImage33.gif.xhtml" style="display:block;" width="780"/>
+      </td>
+     </tr>
+     <tr>
+      <td align="center">
+       <div id="footer">
+        <table border="0" cellpadding="3" cellspacing="0" class="footer" width="100%">
+         <tr>
+          <td align="left">
+           <a href="https://www.ica.gov.sg/" target="_blank">
+            ICA Website
+           </a>
+           •
+           <a href="http://www.ecitizen.gov.sg/" target="_blank">
+            eCitizen
+           </a>
+          </td>
+          <td>
+          </td>
+         </tr>
+         <tr>
+          <td align="left">
+           <a href="https://www.ica.gov.sg/landingpage/landingpage_privacy" target="_blank">
+            Privacy Statement
+           </a>
+           |
+           <a href="https://www.ica.gov.sg/landingpage/landingpage_termsofuse" target="_blank">
+            Terms of Use
+           </a>
+          </td>
+          <td>
+           <div align="right">
+            © 2018
+                                         Government of Singapore
+           </div>
+          </td>
+         </tr>
+        </table>
+       </div>
+      </td>
+     </tr>
+    </table>
+    <br/>
+   </div>
+  </div>
+  <script id="sessionTimeoutDialog_s" type="text/javascript">
+   $(function(){PrimeFaces.cw('ConfirmDialog','sessionTimeoutCfmDlg',{id:'sessionTimeoutDialog',width:'500'});});
+  </script>
+  <div class="ui-confirm-dialog ui-dialog ui-widget ui-widget-content ui-overlay-hidden ui-corner-all ui-shadow" id="sessionTimeoutDialog">
+   <div class="ui-dialog-titlebar ui-widget-header ui-helper-clearfix ui-corner-top">
+    <span class="ui-dialog-title">
+     Please extend your session
+    </span>
+    <a class="ui-dialog-titlebar-icon ui-dialog-titlebar-close ui-corner-all" href="#">
+     <span class="ui-icon ui-icon-closethick">
+     </span>
+    </a>
+   </div>
+   <div class="ui-dialog-content ui-widget-content">
+    <span class="ui-icon ui-icon-alert ui-confirm-dialog-severity">
+    </span>
+    <span class="ui-confirm-dialog-message">
+     <span id="sessionTimeoutCfmMsg">
+      The current session is about to time out in 30 seconds. Do you want to extend the session?
+     </span>
+    </span>
+   </div>
+   <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+    <div align="center">
+     <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" id="j_idt56" name="j_idt56" onclick="sessionTimeoutCfmDlg.hide();resetLeftTime();;PrimeFaces.ab({source:'j_idt56'});return false;" type="submit">
+      <span class="ui-button-text ui-c">
+       OK
+      </span>
+     </button>
+     <script id="j_idt56_s" type="text/javascript">
+      PrimeFaces.cw('CommandButton','widget_j_idt56',{id:'j_idt56'});
+     </script>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>
